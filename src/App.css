@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+}
+.app {
+  background-color: cornflowerblue;
+  height: max-content;
+}
+.heading {
+  text-align: center;
+}
+.sections {
+  display: flex;
+  flex-direction: row;
+}
+.side-bar {
+  flex: 0.2;
+  background-color: aqua;
+  height: 100vh;
+}
+.main-screen {
+  flex: 0.8;
+  background-color: yellowgreen;
+}
+.middle-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.table {
+  flex: 0.7;
+  background-color: rgb(96, 100, 107);
+  height: 500px;
+}
+.bottom-bar {
+  height: 500px;
+  flex: 0.3;
+  background-color: blueviolet;
+}
