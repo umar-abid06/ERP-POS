@@ -1,38 +1,23 @@
 * {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.app {
-  background-color: cornflowerblue;
-  height: max-content;
+html {
+  font-size: 62.5%;
+  background-color: rgb(165, 172, 179);
 }
-.heading {
-  text-align: center;
+html {
+  /* font-size: 62.5%; */
 }
-.sections {
-  display: flex;
-  flex-direction: row;
+body {
+  /* font-family: "Lato", sans-serif; */
 }
-.side-bar {
-  flex: 0.2;
-  background-color: aqua;
-  height: 100vh;
-}
-.main-screen {
-  flex: 0.8;
-  background-color: yellowgreen;
-}
-.middle-block {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.table {
-  flex: 0.7;
-  background-color: rgb(96, 100, 107);
-  height: 500px;
-}
-.bottom-bar {
-  height: 500px;
-  flex: 0.3;
-  background-color: blueviolet;
+.container {
+  /* width: 75vw; */
+  /* height: 100vh; */
+  min-height: 80vh;
+  margin: 10rem;
+  padding: 5rem;
+  background-color: rgb(233, 233, 233);
 }
