@@ -13,51 +13,19 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Button, Stack, Typography } from "@mui/material";
 import CustomButton from "../button/button.component";
-
-// const products = [
-//   { title: "Macroni", id: 1 },
-//   { title: "Macron", id: 9 },
-//   { title: "whatever", id: 2 },
-//   { title: "Lasagna", id: 3 },
-//   { title: "Pasta", id: 4 },
-//   { title: "Noodles", id: 5 },
-//   { title: "Spaghetti", id: 6 },
-// ];
+import { useSelector } from "react-redux";
 
 const SearchBar = ({ prods }) => {
-  const { Items } = orders[0];
-  const [suggestions, setSuggestions] = useState([]);
   const [productTitle, setProductTitle] = useState("");
   const [productID, setProductID] = useState("");
+  const [selectedProducts, setSelectedProducts] = useState([]);
   const [productCode, setProductCode] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [productQuantity, setProductQuantity] = useState("");
   const [productArr, setProductArr] = useState([]);
   const [sum, setSum] = useState(0);
 
-  const onTextChanged = (e) => {
-    let value = e.target.value;
-    let suggestions = [];
-    if (value.length > 0) {
-      const regex = new RegExp(`${value}`, "i");
-      suggestions = Items.filter((v) => regex.test(v.itemName));
-      //   console.log(suggestions);
-    }
-    setSuggestions(suggestions);
-    setProductTitle(value);
-  };
-  const renderSuggestions = () => {
-    if (suggestions.length === 0) {
-      return null;
-    }
-    return (
-      <ul>
-        {suggestions.map((item) => (
-          <li onClick={() => selectedSuggestion(item)}>{item.itemName}</li>
-        ))}
-      </ul>
-    );
-  };
+  const orderData = useSelector((state) => state.OrderReducer.orders);
 
   let finalArr = [
     {
@@ -73,7 +41,6 @@ const SearchBar = ({ prods }) => {
 
   useEffect(() => {
     setProductArr(productArr.concat(finalArr));
-    // setProductTitle("");
     console.log(productArr);
   }, [productID]);
 
@@ -83,22 +50,21 @@ const SearchBar = ({ prods }) => {
     return a.productPrice;
   };
 
-  const selectedSuggestion = (value) => {
-    setSuggestions([]);
-    setProductTitle(value.itemName);
-    setProductID(value.itemID);
-    setProductCode(value.itemCode);
-    setProductPrice(value.unitPrize);
-    setProductQuantity(value.quantity);
+  const selectedSuggestion = (orderData) => {
+    setProductTitle(orderData.itemName);
+    setProductID(orderData.itemID);
+    setProductCode(orderData.itemCode);
+    setProductPrice(orderData.unitPrize);
+    setProductQuantity(orderData.quantity);
 
-    if (value.itemID === productID) {
+    if (orderData.itemID === productID) {
       return setProductID(productID + Math.random());
     }
   };
 
   const handleProceed = () => {
     const order = [{ orderID: productArr.productID }, totalPrice];
-    console.log(order);
+    console.log("Proceeded----->", order);
   };
   return (
     <>
@@ -111,15 +77,6 @@ const SearchBar = ({ prods }) => {
             alignItems: "center",
           }}
         >
-          <div className="search-fields">
-            <input
-              value={productTitle}
-              placeholder="Product"
-              onChange={(e) => onTextChanged(e)}
-              type="text"
-            />
-            {renderSuggestions()}
-          </div>
           <div>
             <Typography
               style={{
