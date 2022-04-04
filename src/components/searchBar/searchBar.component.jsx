@@ -13,57 +13,34 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Button, Stack, Typography } from "@mui/material";
 import CustomButton from "../button/button.component";
-import { useSelector } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
-const SearchBar = ({ prods }) => {
+const SearchBar = ({ allOrders }) => {
   const [productTitle, setProductTitle] = useState("");
-  const [productID, setProductID] = useState("");
-  const [selectedProducts, setSelectedProducts] = useState([]);
-  const [productCode, setProductCode] = useState("");
   const [productPrice, setProductPrice] = useState("");
-  const [productQuantity, setProductQuantity] = useState("");
   const [productArr, setProductArr] = useState([]);
   const [sum, setSum] = useState(0);
 
-  const orderData = useSelector((state) => state.OrderReducer.orders);
+  // let all_selected_orders = [];
 
-  let finalArr = [
-    {
-      productID: productID,
-      productCode: productCode,
-      productTitle: productTitle,
-      productPrice: productPrice,
-      productQuantity: productQuantity,
-    },
-  ];
+  // const orderData = useSelector((state) => state.OrderReducer.orders);
+  // // all_selected_orders.push(orderData);
+
+  console.log("allOrders--->", allOrders);
 
   let totalPrice = [];
 
   useEffect(() => {
-    setProductArr(productArr.concat(finalArr));
-    console.log(productArr);
-  }, [productID]);
+    setProductArr(productArr.concat(allOrders));
+  }, [allOrders]);
 
   const takeTotalPriceValue = (a) => {
-    totalPrice = +totalPrice + +a.productPrice;
-
-    return a.productPrice;
-  };
-
-  const selectedSuggestion = (orderData) => {
-    setProductTitle(orderData.itemName);
-    setProductID(orderData.itemID);
-    setProductCode(orderData.itemCode);
-    setProductPrice(orderData.unitPrize);
-    setProductQuantity(orderData.quantity);
-
-    if (orderData.itemID === productID) {
-      return setProductID(productID + Math.random());
-    }
+    totalPrice = +totalPrice + +a.unitPrize;
+    return a.unitPrize;
   };
 
   const handleProceed = () => {
-    const order = [{ orderID: productArr.productID }, totalPrice];
+    const order = [{ orderID: productArr.itemID }, totalPrice];
     console.log("Proceeded----->", order);
   };
   return (
@@ -138,7 +115,7 @@ const SearchBar = ({ prods }) => {
             <TableBody>
               {productArr?.map((items) => (
                 <TableRow
-                  key={items.productID}
+                  key={items.itemID}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell
@@ -149,19 +126,19 @@ const SearchBar = ({ prods }) => {
                     component="th"
                     scope="row"
                   >
-                    {items.productTitle}
+                    {items.itemName}
                   </TableCell>
                   <TableCell
                     sx={{ fontSize: 17, textAlign: "center" }}
                     align="right"
                   >
-                    {items.productCode}
+                    {items.itemCode}
                   </TableCell>
                   <TableCell
                     sx={{ fontSize: 17, textAlign: "center" }}
                     align="right"
                   >
-                    {items.productQuantity}
+                    {items.quantity}
                   </TableCell>
                   <TableCell
                     sx={{ fontSize: 17, textAlign: "center" }}

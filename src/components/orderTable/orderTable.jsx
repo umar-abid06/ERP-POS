@@ -3,7 +3,7 @@ import { orders } from "../../data/orders";
 import { useDispatch } from "react-redux";
 import { setOrder } from "../../store/actions/eachOrderAction";
 
-const OrderTable = () => {
+const OrderTable = ({ setAllOrders }) => {
   const dispatch = useDispatch();
 
   const { Items } = orders[0];
@@ -21,6 +21,10 @@ const OrderTable = () => {
     setSuggestions(suggestions);
     setProductTitle(value);
   };
+
+  const SetOrders = (item) => {
+    setAllOrders((prev) => [...prev, item]);
+  };
   const renderSuggestions = () => {
     if (suggestions.length === 0) {
       return null;
@@ -28,7 +32,7 @@ const OrderTable = () => {
     return (
       <ul>
         {suggestions.map((item) => (
-          <li onClick={() => dispatch(setOrder(item))}>{item.itemName}</li>
+          <li onClick={() => SetOrders(item)}>{item.itemName}</li>
         ))}
       </ul>
     );
