@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { orders } from "../../data/orders";
 import { useDispatch } from "react-redux";
 import { setOrder } from "../../store/actions/eachOrderAction";
+import "./searchBar.css";
 
-const OrderTable = ({ setAllOrders }) => {
+const SearchBar = ({ setAllOrders }) => {
   const dispatch = useDispatch();
 
   const { Items } = orders[0];
@@ -23,7 +24,7 @@ const OrderTable = ({ setAllOrders }) => {
   };
 
   const SetOrders = (item) => {
-    setAllOrders((prev) => [...prev, item]);
+    setAllOrders([item]);
   };
   const renderSuggestions = () => {
     if (suggestions.length === 0) {
@@ -59,4 +60,4 @@ const OrderTable = ({ setAllOrders }) => {
     </div>
   );
 };
-export default OrderTable;
+export default SearchBar;

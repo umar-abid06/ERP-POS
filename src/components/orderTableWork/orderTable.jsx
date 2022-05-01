@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./searchBar.styles.css";
+import "./orderTable.css";
 import SearchIcon from "@mui/icons-material/Search";
 import { orders } from "../../data/orders";
 import Table from "@mui/material/Table";
@@ -26,7 +26,7 @@ const SearchBar = ({ allOrders }) => {
   // const orderData = useSelector((state) => state.OrderReducer.orders);
   // // all_selected_orders.push(orderData);
 
-  console.log("allOrders--->", allOrders);
+  console.log("allOrders--->", productArr);
 
   let totalPrice = [];
 
@@ -40,7 +40,13 @@ const SearchBar = ({ allOrders }) => {
   };
 
   const handleProceed = () => {
-    const order = [{ orderID: productArr.itemID }, totalPrice];
+    const order = [
+      {
+        orderID: productArr[productArr.length - 1].itemID + 1,
+        orderLines: productArr,
+        totalPrice: totalPrice,
+      },
+    ];
     console.log("Proceeded----->", order);
   };
   return (
