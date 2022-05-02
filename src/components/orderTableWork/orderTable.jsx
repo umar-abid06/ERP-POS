@@ -15,7 +15,7 @@ import { Button, Stack, Typography } from "@mui/material";
 import CustomButton from "../button/button.component";
 import { connect, useSelector } from "react-redux";
 
-const SearchBar = ({ allOrders }) => {
+const OrderTable = ({ allOrders }) => {
   const [productTitle, setProductTitle] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [productArr, setProductArr] = useState([]);
@@ -208,4 +208,4 @@ const SearchBar = ({ allOrders }) => {
   );
 };
 
-export default SearchBar;
+export default OrderTable;

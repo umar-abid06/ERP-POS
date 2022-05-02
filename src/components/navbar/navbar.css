@@ -1,0 +1,16 @@
+.header {
+  background-color: rgb(206, 216, 216);
+  display: flex;
+}
+.title {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+.nav_buttons {
+  flex: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

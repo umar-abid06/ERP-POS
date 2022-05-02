@@ -1,0 +1,13 @@
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.signup {
+  margin-top: 5%;
+  padding: 5%;
+  border: 1px solid black;
+}
+input {
+  margin: 5px;
+  padding: 5px;
+}

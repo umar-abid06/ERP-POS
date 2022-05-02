@@ -4,13 +4,14 @@ import OrderTable from "./components/orderTableWork/orderTable";
 import SearchBar from "./components/searchBarWork/searchBar";
 import { Provider } from "react-redux";
 import { store } from "./store/index";
+import Navigator from "./config/routers";
 
 const App = () => {
-  const [allOrders, setAllOrders] = useState([]);
   return (
     <Provider store={store}>
-      <SearchBar setAllOrders={setAllOrders} />
-      <OrderTable allOrders={allOrders} />
+      <div className="App">
+        <Navigator />
+      </div>
     </Provider>
   );
 };
