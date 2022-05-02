@@ -1,0 +1,21 @@
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.signin {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 5%;
+  border: 1px solid black;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25%;
+  width: 50%;
+}
+.takenButtons {
+  width: 300px;
+}
