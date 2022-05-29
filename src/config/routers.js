@@ -4,6 +4,7 @@ import POS from "../views/POS";
 import SignIn from "../views/SignIn";
 import SignUp from "../views/SignUp";
 import Inventory from "../views/Inventory";
+import PaymentScreen from "../views/paymentScreen/paymentScreen";
 const Navigator = () => {
   return (
     <BrowserRouter>
@@ -14,6 +15,8 @@ const Navigator = () => {
         <Route path="/posScreen" element={<POS />} />
         <Route path="/managerSelector" element={<ManageSelector />} />
         <Route path="/inventory" element={<Inventory />} />
+        <Route path="/posScreen/payment" element={<PaymentScreen />} />
+
       </Routes>
     </BrowserRouter>
   );

@@ -1,6 +1,7 @@
 import OrderTable from "../../components/orderTableWork/orderTable";
 import SearchBar from "../../components/searchBarWork/searchBar";
 import Navbar from "../../components/navbar/Navbar";
+import { Grid } from "@mui/material";
 
 import { useState } from "react";
 const POS = () => {
@@ -14,8 +15,16 @@ const POS = () => {
           { label: "Managing Screen", href: "/managerSelector" },
         ]}
       />
-      <SearchBar setAllOrders={setAllOrders} />
-      <OrderTable allOrders={allOrders} />
+      <Grid container spacing={2}>
+        <Grid item xs={6} md={4}>
+          <SearchBar setAllOrders={setAllOrders} />
+    
+        </Grid>
+        <Grid item xs={6} md={8}>
+          <OrderTable allOrders={allOrders} />
+        </Grid>
+      </Grid>
+      
     </div>
   );
 };

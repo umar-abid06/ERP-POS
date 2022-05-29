@@ -1,16 +1,13 @@
 .header {
   background-color: rgb(206, 216, 216);
   display: flex;
+  padding: 8px;
 }
-.title {
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-}
+
 .nav_buttons {
-  flex: 2;
+  flex: 1;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }

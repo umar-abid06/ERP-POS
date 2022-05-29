@@ -4,14 +4,14 @@
   box-sizing: border-box;
 }
 html {
-  font-size: 62.5%;
-  background-color: rgb(165, 172, 179);
+  font-size: 100%;
+  /* background-color: rgb(165, 172, 179); */
 }
 html {
   /* font-size: 62.5%; */
 }
 body {
-  /* font-family: "Lato", sans-serif; */
+  font-family: "Lato", sans-serif;
 }
 .container {
   /* width: 75vw; */

@@ -52,7 +52,10 @@ function SignIn() {
               Login
             </Button>
           </div>
-          <h3 onClick={() => navigate("/register")}>New user? Register here</h3>
+          <h2 onClick={() => navigate("/register")}>
+            {" "}
+            New user? Register here{" "}
+          </h2>
         </div>
       </div>
     </div>
