@@ -1,5 +1,6 @@
 const initialState = {
-  orders: {},
+  order: [],
+  allOrders:[]
 };
 
 export default initialState;

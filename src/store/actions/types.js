@@ -1,3 +1,4 @@
 export const TYPES = {
   EACH_ORDER: "EACH_ORDER",
+  ALL_ORDERS: "ALL_ORDERS"
 };

@@ -64,7 +64,7 @@ function PaymentScreen() {
     setExpireYear(e.target.value);
   }
 
-  // cleave.js logic 
+  // cleaveage.js logic 
 
   return (
        <div className="container">

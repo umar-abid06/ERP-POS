@@ -1,15 +1,15 @@
 import { TYPES } from "../actions/types";
 import initialState from "./initialState";
 
-const OrderReducer = (state = initialState.order, action) => {
+const allOrdersReducer = (state = initialState.allOrders, action) => {
   switch (action.type) {
-    case TYPES.EACH_ORDER:
+    case TYPES.ALL_ORDERS:
       return {
         ...state,
-        order: action.payload,
+        allOrders: action.payload
       };
     default:
       return state;
   }
 };
-export default OrderReducer;
+export default allOrdersReducer;

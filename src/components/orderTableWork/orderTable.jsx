@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./orderTable.css";
-import SearchIcon from "@mui/icons-material/Search";
-import { orders } from "../../data/orders";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -11,45 +9,91 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import TextField from "@mui/material/TextField";
 import { Button, Stack, Typography } from "@mui/material";
-import CustomButton from "../button/button.component";
-import { connect, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import { allOrdersAction } from "../../store/actions/allOrdersActions";
+import initialState from "../../store/reducers/initialState";
 
 
-const OrderTable = ({ allOrders }) => {
+const OrderTable = ({allOrders}) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const [productTitle, setProductTitle] = useState("");
-  const [productQuantity, setProductQuantity] = useState(1);
+
   const [productArr, setProductArr] = useState([]);
-  const [sum, setSum] = useState(0);
+  // const [unique, setUnique] = useState(allOrders)
 
-  // let all_selected_orders = [];
+  const eachOrderData = useSelector((state) => state.order.order);
+  useEffect(() => {
+    setProductArr([eachOrderData])
+ },[eachOrderData])
+  // setProductArr([eachOrderData])
 
-  // const orderData = useSelector((state) => state.OrderReducer.orders);
-  // // all_selected_orders.push(orderData);
+  // if(eachOrderData?.name){
+  //   allOrders.push(eachOrderData)
+  //   console.log("all_selected_orders---->", allOrders)
+  //   let newSelected = [...allOrders]
+  // console.log("eachOrderData--->", eachOrderData);
+  // }
+  dispatch(allOrdersAction(eachOrderData))
 
-  console.log("allOrders--->", productArr);
+
+  const allOrdersData = useSelector((state) => console.log("allOrdersData---->",state));
+  // console.log("allOrdersData--->", state)
 
   let totalPrice = [];
 
-  useEffect(() => {
-    setProductArr(productArr.concat(allOrders));
-  }, [allOrders]);
+  // useEffect(() => {
+  //   setProductArr(productArr.concat(eachOrderData));
+  // }, [eachOrderData]);
 
-  const takeTotalPriceValue = (a) => {
-    a.quantity = productQuantity;
-    totalPrice = +totalPrice + +(a.unitPrize * a.quantity);
-    return a.unitPrize * a.quantity;
+//   const checkingDuplicates = () => {
+//     var output = [];
+//     let count = 0
+//     productArr.forEach((item, index)=>{
+//       count ++;
+//       let temp = 0
+//       let existing = output.filter((v, i)=> {
+//         return v.name === item.name;
+//       });
+//       if (existing.length) {
+        
+//         var existingIndex = output.indexOf(existing[0]);
+//         temp = existingIndex;
+//         let newTemp = temp
+//         if (existingIndex != temp){
+          
+//         }
+//         console.log("EXISTING----->", existing, existingIndex)
+//         output[existingIndex].quantity = count;
+        
+//       } else {
+//         output.push(item);
+//       }
+// })
+  //   console.log("output---->",output)
+  //   setUnique(output)
+  // }
+  const takeTotalPriceValue = () => {
+    let price = 0;
+    let productsPrice = productArr?.forEach((product) => {
+      price += product?.price * product?.quantity;
+    });
+    return price;
+  };
+  const orderlineTotal = (each) => {
+      let price = 0;
+      let prod = each
+      price += prod?.price * prod?.quantity;
+    return price;
   };
 
   const handleProceed = () => {
     const order = [
       {
-        orderID: productArr[productArr.length - 1].itemID + 1,
+        orderID: productArr[productArr.length - 1].id + 1,
         orderLines: productArr,
         totalPrice: totalPrice,
       },
@@ -59,12 +103,13 @@ const OrderTable = ({ allOrders }) => {
   };
   const deleteProd = (single) => {
     productArr.splice(single, 1)
-    setProductArr(productArr.filter((selected)=> selected!== single))
+    setProductArr(productArr.filter((selected) => selected !== single))
     console.log(single)
   }
+
   return (
     <>
-      <div style={{ justifyContent: "space-between", padding:"10px" }}>
+      <div style={{ justifyContent: "space-between", padding: "10px" }}>
         <div
           style={{
             display: "flex",
@@ -132,11 +177,11 @@ const OrderTable = ({ allOrders }) => {
             <TableBody>
               {productArr?.map((items, index) => (
                 <TableRow
-                  key={items.itemID}
+                key={items?.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell
-                  key={items.itemID}
+                    key={items?.id}
                     sx={{
                       fontSize: 12,
                       textAlign: "left",
@@ -144,39 +189,33 @@ const OrderTable = ({ allOrders }) => {
                     component="th"
                     scope="row"
                   >
-                    {items.itemName}
+                    {items?.name}
                   </TableCell>
                   <TableCell
                     sx={{ fontSize: 12, textAlign: "center" }}
                     align="right"
                   >
-                    {items.itemCode}
+                    {items?.id}
                   </TableCell>
                   <TableCell
                     sx={{ fontSize: 12, textAlign: "center" }}
                     align="right"
                   >
-                    <TextField
-                      id="standard-basic"
-                      label="Standard"
-                      variant="standard"
-                      defaultValue={items.quantity}
-                      onChange={(e) => setProductQuantity(e.target.value)}
-                    />
+                    {items?.quantity}
                   </TableCell>
                   <TableCell
                     sx={{ fontSize: 12, textAlign: "center" }}
                     align="right"
                     onChange={(e) => console.log(e.target.value)}
                   >
-                    {takeTotalPriceValue(items)}
+                   {orderlineTotal(items, index)}
                   </TableCell>
                   <TableCell
                     sx={{ fontSize: 12, textAlign: "center" }}
                     align="right"
-                    onClick={(e) =>deleteProd(index)}
+                    onClick={(e) => deleteProd(index)}
                   >
-                    <DeleteOutlinedIcon/>
+                    <DeleteOutlinedIcon />
                   </TableCell>
                 </TableRow>
               ))}
@@ -184,12 +223,12 @@ const OrderTable = ({ allOrders }) => {
           </Table>
         </TableContainer>
       </div>
-      <Card sx={{ marginTop: 5,  margin:'10px',}} raised={true}>
+      <Card sx={{ marginTop: 5, margin: '10px', }} raised={true}>
         <CardContent>
           <div
             style={{
-             
-              paddingRight:"20px",
+
+              paddingRight: "20px",
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
@@ -204,23 +243,23 @@ const OrderTable = ({ allOrders }) => {
               }}
               variant="h4"
             >
-              Rs. {totalPrice}
+              Rs. {takeTotalPriceValue()}
             </Typography>
-      <div>
-        <Button
-          style={{ marginLeft: "20%" }}
-          onClick={handleProceed}
-          variant="contained"
-          sx={{
-            backgroundColor: "rgb(36, 34, 34)",
-            fontSize: 15,
-          }}
-          size="large"
-          disabled={productArr.length > 0 ? false : true}
-        >
-          PROCEED
-        </Button>
-      </div>
+            <div>
+              <Button
+                style={{ marginLeft: "20%" }}
+                onClick={handleProceed}
+                variant="contained"
+                sx={{
+                  backgroundColor: "rgb(36, 34, 34)",
+                  fontSize: 15,
+                }}
+                size="large"
+                disabled={productArr?.length > 0 ? false : true}
+              >
+                PROCEED
+              </Button>
+            </div>
           </div>
         </CardContent>
       </Card>
