@@ -1,13 +1,21 @@
+body
+{
+  background-color: aqua;
+}
+
 .column {
   display: flex;
   flex-direction: column;
+  color: green;
 }
 .signin {
-  margin-top: 5%;
+  
+  background-color:lightblue;
+  margin-top: 18%;
   margin-left: 5%;
   margin-right: 5%;
   padding: 5%;
-  border: 5px solid black;
+  border: 4px solid aqua;
 }
 
 .inputs {
@@ -17,5 +25,16 @@
   width: 50%;
 }
 .takenButtons {
-  width: 300px;
+ background-color: azure;
+  width: 80px;
+  border: 4px solid black;
+  position: absolute;
+  left: 730px;
+  top: 550px;
+
+}
+
+#softsol
+{
+  color: aqua;
 }
