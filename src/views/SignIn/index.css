@@ -1,21 +1,34 @@
+body
+{
+  background-color:blue;
+}
+
 .column {
   display: flex;
   flex-direction: column;
+  color: green;
 }
 .signin {
-  margin-top: 5%;
-  margin-left: 5%;
-  margin-right: 5%;
+  
+  background-color:white;
+  margin-top: 18%;
+ 
+  
   padding: 5%;
-  border: 1px solid black;
+  border: 4px solid white;
+  height: 450px;
+  width:1700px;
 }
 
 .inputs {
   display: flex;
   flex-direction: column;
-  margin-left: 25%;
+  margin-left: 2%;
   width: 50%;
+  
 }
-.takenButtons {
-  width: 300px;
+
+#softsol
+{
+  color: aqua;
 }

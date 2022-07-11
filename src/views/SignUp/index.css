@@ -1,13 +1,29 @@
+body
+{
+  background-color:blue;
+}
+
 .column {
   display: flex;
   flex-direction: column;
+
 }
 .signup {
-  margin-top: 5%;
+  background-color: white;
+  margin-top: 7%;
   padding: 5%;
-  border: 1px solid black;
+  border: 5px solid white;
+  height: 500px;
+  width:1700px;
 }
 input {
+  background-color: whitesmoke;
+  border: 2px solid black;
+  font-size: 20px;
+  height: 40px;
+  width:380px;
   margin: 5px;
   padding: 5px;
+  margin-left: 520px;
+  margin-top: 8px;
 }
