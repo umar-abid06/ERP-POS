@@ -11,7 +11,7 @@ app.use(express.json());
 
 
 //Routes:
-app.post('/products', async (req, res)=>{
+app.post('/createProduct', async (req, res)=>{
   try {
     const {id, name, price, quantity} = req.body;
     const newProduct = await pool.query('INSERT INTO product (id, name, price, quantity) VALUES ($1, $2, $3, $4) RETURNING *', [id, name, price, quantity])

@@ -1,32 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setOrder } from "../../store/actions/eachOrderAction";
 import "./searchBar.css";
 import { Button, Typography , Stack, TextField} from "@mui/material";
-
-
+import axios from 'axios';
+import {getProducts} from "../../../src/store/actions/product"
+import { getProductsFromDb } from "../../db/product";
+import { SignalCellularNoSimOutlined } from "@mui/icons-material";
 
 const SearchBar = () => {
+  const dispatch = useDispatch();
+
+  const allProduct = useSelector((state) => state.products);
+
+  const [suggestions, setSuggestions] = useState(allProduct?.productsData);
+  const [productTitle, setProductTitle] = useState("");
+  const [products, setProducts] = useState(allProduct?.productsData)
 
   useEffect(()=>{
-    getProductsFromDb()
+    dispatch(getProducts())
   }, []);
 
-  const [suggestions, setSuggestions] = useState([]);
-  const [productTitle, setProductTitle] = useState("");
-  const [products, setProducts] = useState([])
 
-  const dispatch = useDispatch();
- 
-  const getProductsFromDb = async () => {
-    try {
-      let res = await fetch("http://localhost:5000/getProducts")
-      let prods = await res.json()
-      setProducts(prods.Items)
-    } catch (err) {
-      console.log(err.message)
-    }
-  }
+useEffect(() => {
+  setProducts(allProduct?.productsData)
+  setSuggestions(allProduct?.productsData)
+},[allProduct])
+
 
   const onTextChanged = (e) => {
     let value = e.target.value;
@@ -45,7 +45,7 @@ const SearchBar = () => {
   };
 
   const renderSuggestions = () => {
-    if (suggestions.length === 0) {
+    if (suggestions?.length === 0) {
       return null;
     }
     return (

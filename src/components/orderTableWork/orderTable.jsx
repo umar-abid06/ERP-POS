@@ -21,14 +21,26 @@ const OrderTable = ({allOrders}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
   const [productArr, setProductArr] = useState([]);
-  // const [unique, setUnique] = useState(allOrders)
+
+  const [allSelectedProducts, setAllSelectedProducts] = useState([]);
+  // const [unique, setUnique] = useState([])
 
   const eachOrderData = useSelector((state) => state.order.order);
+  const allOrdersData = useSelector((state) => state.allOrders.allOrders);
+
   useEffect(() => {
-    setProductArr([eachOrderData])
+    setAllSelectedProducts(allOrdersData)
+    dispatch(allOrdersAction(eachOrderData))
+    checkingDuplicates()
+
  },[eachOrderData])
+
+
+ useEffect(() => {
+  checkingDuplicates()
+}, [allSelectedProducts]);
+
   // setProductArr([eachOrderData])
 
   // if(eachOrderData?.name){
@@ -37,45 +49,46 @@ const OrderTable = ({allOrders}) => {
   //   let newSelected = [...allOrders]
   // console.log("eachOrderData--->", eachOrderData);
   // }
-  dispatch(allOrdersAction(eachOrderData))
 
 
-  const allOrdersData = useSelector((state) => console.log("allOrdersData---->",state));
   // console.log("allOrdersData--->", state)
 
   let totalPrice = [];
 
-  // useEffect(() => {
-  //   setProductArr(productArr.concat(eachOrderData));
-  // }, [eachOrderData]);
 
-//   const checkingDuplicates = () => {
-//     var output = [];
-//     let count = 0
-//     productArr.forEach((item, index)=>{
-//       count ++;
-//       let temp = 0
-//       let existing = output.filter((v, i)=> {
-//         return v.name === item.name;
-//       });
-//       if (existing.length) {
+  const checkingDuplicates = () => {
+    let output = allSelectedProducts?.filter(function( element ) {
+      return element !== undefined;
+   });
+  //   var output = [];
+  //   let count = 0
+  //   productArr?.forEach((item, index)=>{
+  //     if(item == null){
+  //       productArr.splice(index, 1)
+  //     }
+  //     count ++;
+  //     let temp = 0
+  //     let existing = output.filter((v, i)=> {
+  //       return v.name === item.name;
+  //     });
+  //     if (existing.length) {
         
-//         var existingIndex = output.indexOf(existing[0]);
-//         temp = existingIndex;
-//         let newTemp = temp
-//         if (existingIndex != temp){
-          
-//         }
-//         console.log("EXISTING----->", existing, existingIndex)
-//         output[existingIndex].quantity = count;
+  //       var existingIndex = output.indexOf(existing[0]);
+  //       temp = existingIndex;
+  //       let newTemp = temp
+  //       if (existingIndex != temp){
+  //         console.log("INSIIIDIEEEE---->")
+  //       }
+  //       console.log("EXISTING----->", existing, existingIndex)
+  //       output[existingIndex].quantity = count;
         
-//       } else {
-//         output.push(item);
-//       }
-// })
-  //   console.log("output---->",output)
-  //   setUnique(output)
-  // }
+  //     } else {
+  //       output.push(item);
+  //     }
+  // })productArr
+    console.log("output---->",output)
+    setProductArr(output)
+}
   const takeTotalPriceValue = () => {
     let price = 0;
     let productsPrice = productArr?.forEach((product) => {
@@ -213,7 +226,7 @@ const OrderTable = ({allOrders}) => {
                   <TableCell
                     sx={{ fontSize: 12, textAlign: "center" }}
                     align="right"
-                    onClick={(e) => deleteProd(index)}
+                    onClick={() => deleteProd(index)}
                   >
                     <DeleteOutlinedIcon />
                   </TableCell>
