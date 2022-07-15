@@ -3,9 +3,10 @@ import { login } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { useDispatch } from "react-redux";
-import "./index.css";
+import "./signinindex.css";
 import { red } from "@material-ui/core/colors";
 // import addUser from "../../Store/actions";
+
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -46,7 +47,7 @@ function SignIn() {
           <div className="inputs">
             <input style={{border:"2px solid black",backgroundColor:"whitesmoke"}}
             
-            type={"email"}
+            
               required
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Write email here"
@@ -64,7 +65,7 @@ function SignIn() {
             {/* <Button  onClick={onSignin} style={{backgroundColor:""}}>
               <p style={{width:"90px",height:"40px",position:"absolute",left:"740px",top:"406px",backgroundColor:"lightgray"}}><b>LOGIN</b> </p>
             </Button> */}
-            <button onClick={onSignin} style={{width:"90px",height:"30px",position:"absolute",left:"755px",top:"576px",backgroundColor:"green"}}><p style={{color:"white"}}><b>LOGIN</b></p></button>
+            <button onClick={onSignin} style={{width:"90px",height:"30px",position:"absolute",left:"755px",top:"576px",backgroundColor:"green"}}><p style={{fontsize:"700px",color:"white"}}><b>LOGIN</b></p></button>
 
             <img 
           alt="Person's image" 
@@ -102,4 +103,4 @@ function SignIn() {
   );
 }
 
-export default SignIn
+export default SignIn;
