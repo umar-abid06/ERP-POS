@@ -1,6 +1,6 @@
 body
 {
-  background-color:blue;
+  background-color:purple;
 }
 
 .column {
@@ -8,13 +8,16 @@ body
   flex-direction: column;
 
 }
+
+
 .signup {
-  background-color: white;
+  background-color:lightgray;
   margin-top: 7%;
   padding: 5%;
-  border: 5px solid white;
+  border: 5px solid lightgray;
   height: 500px;
   width:1700px;
+  /* //margin-left:31.5%; */
 }
 input {
   background-color: whitesmoke;
@@ -24,6 +27,7 @@ input {
   width:380px;
   margin: 5px;
   padding: 5px;
-  margin-left: 520px;
+  margin-left: 510px;
   margin-top: 8px;
+  margin-bottom:8px;
 }

@@ -8,6 +8,8 @@ const POS = () => {
 
   return (
     <div>
+      
+      <h1 style={{position:"absolute",left:"670px",top:"13px",color:"green"}}>POINT OF SALE </h1>
       <Navbar
         title={[
           { label: "Log Out", href: "/login" },
@@ -15,16 +17,17 @@ const POS = () => {
         ]}
       />
       <Grid container spacing={2}>
-        <Grid item xs={6} md={4}>
-          <SearchBar />
+        <Grid item xs={6} md={4} >
+         <SearchBar/>
     
         </Grid>
-        <Grid item xs={6} md={8}>
+        <Grid item xs={6} md={8} >
           <OrderTable allOrders = {[]}/>
         </Grid>
       </Grid>
       
     </div>
   );
+
 };
 export default POS;

@@ -5,6 +5,7 @@ import SearchBar from "./components/searchBarWork/searchBar";
 import { Provider } from "react-redux";
 import { store } from "./store/index";
 import Navigator from "./config/routers";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (

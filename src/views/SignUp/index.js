@@ -2,6 +2,11 @@ import { useState } from "react";
 import { register } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
+import { hover } from "@testing-library/user-event/dist/hover";
+
+
+
+
 
 function Signup() {
   const [fullname, setFullname] = useState("");
@@ -13,6 +18,8 @@ function Signup() {
   const navigate = useNavigate();
 
   const onSignup = async () => {
+    
+    
     const registerState = await register(
       email,
       password,
@@ -21,6 +28,7 @@ function Signup() {
       role
     );
     if (registerState === true) {
+    
       navigate("/login");
     } else {
       alert("Error In SignUp");
@@ -36,7 +44,8 @@ function Signup() {
             onChange={(e) => setFullname(e.target.value)}
             placeholder="Write fullname here"
           />
-          <input
+          <input style={{marginTop:"5px"}}
+          type={"email"}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Write email here"
           />
@@ -63,8 +72,9 @@ function Signup() {
         /> 
 
 
-          <button onClick={onSignup} style={{width:"90px",height:"40px",position:"absolute",left:"745px",top:"449px",backgroundColor:"lightgray"}}><p style={{fontsize:"700px"}}><b>Register</b></p></button>
-          <p onClick={() => navigate("/login")} style={{fontSize:"40px",position:"absolute",top:"540px",backgroundColor:"yellow",left:"500px"}}>
+          <button onClick={onSignup} style={{width:"90px",height:"40px",position:"absolute",left:"745px",top:"449px",backgroundColor:"green"}}><p style={{fontsize:"700px",color:"white"}}><b>Register</b></p></button>
+          <p onClick={() => navigate("/login")} style={{fontSize:"40px",position:"absolute",top:"540px",backgroundColor:"yellow",left:"500px"}} 
+          >
             <b>Already registered? Login here!</b>
           </p>
         </div>

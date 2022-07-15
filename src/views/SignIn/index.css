@@ -1,6 +1,6 @@
 body
 {
-  background-color:blue;
+  background-color:purple;
 }
 
 .column {
@@ -10,12 +10,12 @@ body
 }
 .signin {
   
-  background-color:white;
+  background-color:lightgrey;
   margin-top: 18%;
  
   
   padding: 5%;
-  border: 4px solid white;
+  border: 4px solid lightgrey;
   height: 450px;
   width:1700px;
 }
@@ -23,8 +23,9 @@ body
 .inputs {
   display: flex;
   flex-direction: column;
-  margin-left: 2%;
+  margin-left: 3%;
   width: 50%;
+  margin-top:-37px;
   
 }
 

@@ -46,7 +46,7 @@ function SignIn() {
           <div className="inputs">
             <input style={{border:"2px solid black",backgroundColor:"whitesmoke"}}
             
-            
+            type={"email"}
               required
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Write email here"
@@ -64,7 +64,7 @@ function SignIn() {
             {/* <Button  onClick={onSignin} style={{backgroundColor:""}}>
               <p style={{width:"90px",height:"40px",position:"absolute",left:"740px",top:"406px",backgroundColor:"lightgray"}}><b>LOGIN</b> </p>
             </Button> */}
-            <button onClick={onSignin} style={{width:"90px",height:"40px",position:"absolute",left:"755px",top:"576px",backgroundColor:"lightgray"}}><p style={{}}><b>LOGIN</b></p></button>
+            <button onClick={onSignin} style={{width:"90px",height:"30px",position:"absolute",left:"755px",top:"576px",backgroundColor:"green"}}><p style={{color:"white"}}><b>LOGIN</b></p></button>
 
             <img 
           alt="Person's image" 
@@ -81,7 +81,7 @@ function SignIn() {
 <img 
           alt="Person's image" 
           src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3je_a2M3s_HgwFXJSk_lM8zE65ML7WjFVag&usqp=CAU'} 
-          style={{ height: "39.5px",width:"40px", position:"absolute",top:"446px",left:"600px" ,border:"2px solid black",backgroundColor:"lightgreen"}} 
+          style={{ height: "39.5px",width:"40px", position:"absolute",top:"449px",left:"600px" ,border:"2px solid black",backgroundColor:"lightgreen"}} 
         /> 
 
 
@@ -102,4 +102,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignIn
