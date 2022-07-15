@@ -5,7 +5,7 @@ import { Grid } from "@mui/material";
 
 import { useState } from "react";
 const POS = () => {
-
+  
   return (
     <div>
       
@@ -22,10 +22,10 @@ const POS = () => {
     
         </Grid>
         <Grid item xs={6} md={8} >
-          <OrderTable allOrders = {[]}/>
+          <OrderTable />
         </Grid>
       </Grid>
-      
+    
     </div>
   );
 

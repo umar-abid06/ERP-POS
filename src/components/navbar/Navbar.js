@@ -15,7 +15,7 @@ const Navbar = (props) => {
     <div>
       <header className="header">
         <div className="title">
-          <Button variant="text" color="secondary" size="large">
+          <Button variant="text" color="secondary" size="large" onC>
             SoftSol
           </Button>
         </div>
