@@ -3,7 +3,7 @@ import { login } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { useDispatch } from "react-redux";
-import "./signinindex.css";
+import "./index.css";
 import { red } from "@material-ui/core/colors";
 // import addUser from "../../Store/actions";
 
