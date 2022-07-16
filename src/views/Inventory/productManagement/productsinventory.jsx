@@ -2,11 +2,13 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Importfromfile from'./excel_import/_importfromfile'
+import './productsinventory.css'
  const Productsinventory=()=>
  {
     return(
         <div>
-<Form style={{width:"500px",border:"2px solid black",backgroundcolor:"lightgreen",position:"absolute",left:"250px",top:"260px",height:"550px"}}>
+<Form className="createproduct">
 <Form.Group style={{marginLeft:"10px",marginRight:"10px"}}>
         <Form.Label>product id</Form.Label>
         <Form.Control type="text"  />
@@ -38,12 +40,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
       
-      <Button variant="primary" type="submit" style={{marginTop:"50px",marginLeft:"150px"}}>
+      <Button variant="primary" type="submit" style={{marginTop:"50px",marginLeft:"130px"}}>
         CREATE PRODUCT
       </Button>
     </Form>
 
-    <Form style={{width:"500px",border:"2px solid black",backgroundcolor:"lightgreen",position:"absolute",left:"770px",top:"260px",height:"550px"}}>
+    <Form className="deleteproduct">
 
     <Form.Group style={{marginLeft:"10px",marginRight:"10px",marginTop:"100px"}}>
         <Form.Label>enter id of the product you want to delete</Form.Label>
@@ -57,6 +59,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
     </Form>
+    <div className="importfrom">
+<Importfromfile/>
+
+    </div>
 
 
     

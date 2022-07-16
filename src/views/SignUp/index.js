@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { register } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
-import "./signupindex.css";
+import "./index.css";
 import { hover } from "@testing-library/user-event/dist/hover";
 
 
