@@ -6,6 +6,7 @@ import Printer from "./printerManagement/printer";
 
 import { Button, Typography, Stack, TextField } from "@mui/material";
 import { useState } from "react";
+import './index.css'
 const Inventory = () => {
 
   const [prodManage, setProdManage] = useState(false)
@@ -42,11 +43,14 @@ const Inventory = () => {
         ]}
       />
       <h1 
-      style={{ marginLeft: "37%", marginTop: "1%", color: "green" }}> INVENTORY MANAGEMENT 
+      className="inventorymanagement"> INVENTORY MANAGEMENT 
       </h1>
 
       <div 
-      style={{ width: '1150px', position: "absolute", height: "270px", left: "300px" }}
+      style={{width: "1150px",
+        position: "absolute",
+         height: "270px",
+          left: "300px"}}
       >
 
 
