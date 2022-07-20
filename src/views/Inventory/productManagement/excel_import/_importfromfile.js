@@ -2,6 +2,7 @@ import {useState} from 'react'
 import {Data} from './data'
 import * as XLSX from 'xlsx'
 import './_importfromfile.css'
+import { uploadProductsInDb } from '../../../../db/product';
 
 function Importfromfile() {
   
@@ -44,6 +45,7 @@ function Importfromfile() {
       const worksheetName = workbook.SheetNames[0];
       const worksheet=workbook.Sheets[worksheetName];
       const data = XLSX.utils.sheet_to_json(worksheet);
+      uploadProductsInDb(data)
       setExcelData(data);
     }
     else{
@@ -82,10 +84,12 @@ function Importfromfile() {
             <table className='table'>
               <thead>
                 <tr>
-                  <th scope='col'>Id</th>
-                  <th scope='col'>Name</th>
+                  <th scope='col'>id</th>
+                  <th scope='col'>barcode</th>
+                  <th scope='col'>name</th>
+                  <th scope='col'>cost_price</th>
                   <th scope='col'>Quantity</th>
-                  <th scope='col'>Price</th>
+                  <th scope='col'>sell_price</th>
                 </tr>
               </thead>
               <tbody>

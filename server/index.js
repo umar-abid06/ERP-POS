@@ -29,16 +29,16 @@ app.post('/uploadProducts', async (req, res) => {
 
   req.body.forEach(async (x) => {
 
-    const { id, name, price, quantity } = x;
+    const { id, barcode, name, cost_price, quantity, sell_price } = x;
     try {
-      const response = await pool.query('INSERT INTO product (id, name, price, quantity) VALUES ($1, $2, $3, $4) RETURNING *', [id, name, price, quantity])
+      const response = await pool.query('INSERT INTO products (id, barcode, name, cost_price, quantity, sell_price) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *', [id, barcode, name, cost_price, quantity, sell_price])
       res.status(201).json({
         message: "Data added successfully",
         data: req.body,
       });
       console.log("AMMU--->")
     } catch (e) {
-      console.log("AMMar--->")
+      console.log(e.message)
       res.write(
         e.message
       );
@@ -51,7 +51,7 @@ app.post('/uploadProducts', async (req, res) => {
 
 app.get('/getProducts', async (req, res) => {
   try {
-    const allProduct = await pool.query('SELECT * FROM product')
+    const allProduct = await pool.query('SELECT * FROM products')
     res.status(201).json({
       message: "All Products inside DB",
       Items: allProduct.rows,
