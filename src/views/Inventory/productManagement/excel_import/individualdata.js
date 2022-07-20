@@ -7,7 +7,6 @@ export const IndividualData = ({individualExcelData}) => {
             <th>{individualExcelData.name}</th>
             <th>{individualExcelData.quantity}</th>
             <th>{individualExcelData.price}</th>
-            
         </>
     )
 }
