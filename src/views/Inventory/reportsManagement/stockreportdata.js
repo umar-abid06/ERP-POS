@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setOrder } from "../../store/actions/eachOrderAction";
-import "./searchBar.css";
+import { setOrder } from "../../../../src/store/actions/eachOrderAction.js";
+import "../../../../src/components/searchBarWork/searchBar.css";
 import { Button, Typography , Stack, TextField} from "@mui/material";
 import axios from 'axios';
-import {getProducts} from "../../../src/store/actions/product"
-import { getProductsFromDb } from "../../db/product";
+import {getProducts} from "../../../../src/store/actions/product"
+import { getProductsFromDb } from "../../../db/product";
 import { SignalCellularNoSimOutlined } from "@mui/icons-material";
+import './stockreportdata.css'
+import ReactDOM from "react-dom";
 
-const SearchBar = () => {
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
+
+const Stockreportdata = () => {
   const dispatch = useDispatch();
 
   const allProduct = useSelector((state) => state.products);
@@ -49,11 +53,47 @@ useEffect(() => {
       return null;
     }
     return (
+
+    
+      
       <div style={{marginLeft:"-2px",display:'flex', flexDirection:'row', flexWrap:"wrap"}} >
+      <ReactHTMLTableToExcel
+      id="test-table-xls-button"
+      className="download-table-xls-button"
+      table="toxls"
+      filename="alibhai"
+      sheet="sheet1"
+      buttonText="download report"
+      
+    />
+     
+
         {suggestions?.map((item, index) => (
-          <div  key={item.id}>
-            <Button sx={{ width:"180px", margin:'6px', height:'100px'}}  variant="contained" color="info" size="small"  onClick={() => SetOrderToStore(item)}> {item.name} <br/> { `(Quant.) ${item.quantity} (Price) ${item.sell_price}` }
-            </Button>
+          <div >
+            <table style={{width:"500px",marginLeft:"-45px"}} id="toxls">
+  <tr>
+
+          
+  </tr>
+  <tr style={{border:"1px solid black"}}>
+    <td className="rowcss">{item.id}</td> 
+    <td className="rowcss">{item.barcode}</td>
+    <td className="rowcss">{item.name}</td>
+    <td className="rowcss">{item.cost_price}</td>
+    <td className="rowcss">{item.quantity}</td>
+    <td className="rowcss">{item.sell_price}</td>
+    
+     
+
+  </tr>
+  
+</table>
+
+
+
+
+
+
           </div>
          
         ))}
@@ -89,4 +129,4 @@ useEffect(() => {
  
   );
 };
-export default SearchBar;
+export default Stockreportdata;
