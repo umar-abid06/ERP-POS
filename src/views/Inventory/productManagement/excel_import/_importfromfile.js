@@ -66,15 +66,7 @@ function Importfromfile() {
             style={{ marginTop: 5 + 'px' }}>{excelFileError}</div>}
           <button type='submit' className='btn btn-success'
             style={{ marginTop: 5 + 'px' }}>Submit</button>
-        onSubmit={handleSubmit}>
-          <label><h5>Upload Excel file</h5></label>
-          <br></br>
-          <input type='file' className='form-control'
-          onChange={handleFile} required></input>                  
-          {excelFileError&&<div className='text-danger'
-          style={{marginTop:5+'px'}}>{excelFileError}</div>}
-          <button type='submit' className='btn btn-success'
-          style={{marginTop:5+'px'}}>Submit</button>
+  
         </form>
       </div>
 
