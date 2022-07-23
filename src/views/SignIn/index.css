@@ -8,6 +8,46 @@ body
   flex-direction: column;
   color: green;
 }
+.i3
+{
+  height: 220px;
+  width:410px;
+   position:absolute;
+   top:62px;
+   left:600px;
+}
+
+.i2
+{
+  height: 39.5px;
+  width:40px;
+   position:absolute;
+   top:449px;
+   left:600px;
+   border:2px solid black;
+   background-Color:lightgreen;
+}
+.i{
+  height: 39.5px;
+  width:40px;
+   position:absolute;
+   top:393px;
+   left:600px;
+   border:2px solid black;
+   background-Color:lightgreen;
+   
+}
+.p
+{
+font-Size:40px;
+position:absolute;
+top:670px;
+background-Color:yellow;
+left:567px;
+}
+.b{
+  
+}
 .signin {
   
   background-color:lightgray;
@@ -32,4 +72,13 @@ body
 #softsol
 {
   color: aqua;
+}
+
+.r
+{
+  color:red;
+  text-Align:center;
+  position:absolute;
+  top:19px;
+  left:690px;
 }

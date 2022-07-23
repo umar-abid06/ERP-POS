@@ -31,3 +31,31 @@ input {
   margin-top: 8px;
   margin-bottom:8px;
 }
+.a
+{
+  position:absolute;
+  left:600px;
+  top:30px;
+  font-Size:50px;
+
+}
+
+.b
+{
+  height: 220px;
+  width:410px;
+   position:absolute;
+   top:150px;
+   left:100px;
+}
+
+
+
+.d
+{
+  font-Size:40px;
+  position:absolute;
+  top:540px;
+  background-Color:yellow;
+  left:500px;
+}
